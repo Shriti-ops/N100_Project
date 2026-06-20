@@ -1,4 +1,18 @@
 rule_id,severity,message
-companies,WARNING,Contains missing values
-profitandloss,WARNING,Contains missing values
-cashflow,WARNING,Contains missing values
+DQ-01,INFO,Companies table checked
+DQ-02,INFO,Duplicate check completed
+DQ-03,WARNING,Null values found in companies
+DQ-04,INFO,Stock price validation completed
+DQ-05,INFO,Market cap validation completed
+DQ-06,INFO,Sector validation completed
+DQ-07,INFO,Peer group validation completed
+DQ-08,INFO,Financial ratios validation completed
+DQ-09,INFO,Documents validation completed
+DQ-10,INFO,Analysis validation completed
+DQ-11,INFO,Profit and loss validation completed
+DQ-12,INFO,Balance sheet validation completed
+DQ-13,INFO,Cashflow validation completed
+DQ-14,INFO,Row count validation completed
+DQ-15,INFO,Schema validation completed
+DQ-16,INFO,Final validation completed
+DQ-03,WARNING,Null values found in companies

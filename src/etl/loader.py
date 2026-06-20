@@ -22,7 +22,11 @@ audit = []
 
 for table, file in files.items():
     try:
-        df = pd.read_excel(file)
+        
+        if table == "companies":
+           df = pd.read_excel(file, header=1)
+        else:
+           df = pd.read_excel(file)
 
         df.to_sql(
             table,

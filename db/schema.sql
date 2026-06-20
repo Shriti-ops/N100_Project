@@ -5,38 +5,64 @@ CREATE TABLE companies (
     company_name TEXT
 );
 
-CREATE TABLE profitandloss (
-    id INTEGER PRIMARY KEY
-);
-
-CREATE TABLE balancesheet (
-    id INTEGER PRIMARY KEY
-);
-
-CREATE TABLE cashflow (
-    id INTEGER PRIMARY KEY
-);
-
-CREATE TABLE stock_prices (
-    id INTEGER PRIMARY KEY
-);
-
 CREATE TABLE sectors (
-    id INTEGER PRIMARY KEY
-);
-
-CREATE TABLE peer_groups (
-    id INTEGER PRIMARY KEY
+    sector_id INTEGER PRIMARY KEY,
+    sector_name TEXT
 );
 
 CREATE TABLE market_cap (
-    id INTEGER PRIMARY KEY
+    marketcap_id INTEGER PRIMARY KEY,
+    company_id INTEGER,
+    market_cap REAL,
+    FOREIGN KEY(company_id)
+        REFERENCES companies(company_id)
 );
 
 CREATE TABLE financial_ratios (
-    id INTEGER PRIMARY KEY
+    ratio_id INTEGER PRIMARY KEY,
+    company_id INTEGER,
+    FOREIGN KEY(company_id)
+        REFERENCES companies(company_id)
+);
+
+CREATE TABLE stock_prices (
+    price_id INTEGER PRIMARY KEY,
+    company_id INTEGER,
+    FOREIGN KEY(company_id)
+        REFERENCES companies(company_id)
+);
+
+CREATE TABLE profitandloss (
+    pnl_id INTEGER PRIMARY KEY,
+    company_id INTEGER,
+    FOREIGN KEY(company_id)
+        REFERENCES companies(company_id)
+);
+
+CREATE TABLE balancesheet (
+    bs_id INTEGER PRIMARY KEY,
+    company_id INTEGER,
+    FOREIGN KEY(company_id)
+        REFERENCES companies(company_id)
+);
+
+CREATE TABLE cashflow (
+    cf_id INTEGER PRIMARY KEY,
+    company_id INTEGER,
+    FOREIGN KEY(company_id)
+        REFERENCES companies(company_id)
 );
 
 CREATE TABLE documents (
-    id INTEGER PRIMARY KEY
+    doc_id INTEGER PRIMARY KEY,
+    company_id INTEGER,
+    FOREIGN KEY(company_id)
+        REFERENCES companies(company_id)
+);
+
+CREATE TABLE analysis (
+    analysis_id INTEGER PRIMARY KEY,
+    company_id INTEGER,
+    FOREIGN KEY(company_id)
+        REFERENCES companies(company_id)
 );
