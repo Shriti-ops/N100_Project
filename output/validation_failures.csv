@@ -1,0 +1,4 @@
+rule_id,severity,message
+companies,WARNING,Contains missing values
+profitandloss,WARNING,Contains missing values
+cashflow,WARNING,Contains missing values
