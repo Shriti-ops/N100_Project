@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 
-# Connect SQLite Database
+# Connect to SQLite Database
 conn = sqlite3.connect("nifty100.db")
 
 files = {
@@ -22,12 +22,16 @@ audit = []
 
 for table, file in files.items():
     try:
-        
-        if table == "companies":
-           df = pd.read_excel(file, header=1)
-        else:
-           df = pd.read_excel(file)
+        # All Excel files have headers in Row 2
+        df = pd.read_excel(file, header=1)
 
+        # Remove completely empty columns (if any)
+        df = df.dropna(axis=1, how="all")
+
+        # Remove completely empty rows (if any)
+        df = df.dropna(how="all")
+
+        # Load into SQLite
         df.to_sql(
             table,
             conn,
@@ -43,6 +47,7 @@ for table, file in files.items():
         audit.append([table, 0, 1])
         print(f"Error loading {table}: {e}")
 
+# Create Audit Report
 audit_df = pd.DataFrame(
     audit,
     columns=[
